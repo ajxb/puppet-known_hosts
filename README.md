@@ -81,6 +81,15 @@ Or, for a specific user:
 * known_hosts::user: sets up the known_hosts file for a user
 * known_hosts::known_host: adds an entry to the known_hosts file
 
+### Parameters: `known_hosts::user`
+
+The following parameters are available to the known_hosts::known_host defined
+type.
+
+#### `home_root`
+
+Optional root folder for user home, overrides default of /home.
+
 ### Parameters: `known_hosts::known_host`
 
 The following parameters are available to the known_hosts::known_host defined
@@ -98,6 +107,10 @@ system-wide (default).
 #### `revoked`
 
 Whether the key should be marked as revoked or not. Default is not revoked.
+
+#### `home_root`
+
+Optional root folder for user home, overrides default of /home.
 
 #### `host_aliases`
 
