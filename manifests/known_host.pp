@@ -73,6 +73,7 @@
 define known_hosts::known_host (
   $ensure       = 'present',
   $user         = undef,
+  $home_root    = undef,
   $revoked      = false,
   $host_aliases = [],
   $key          = undef,
@@ -82,7 +83,11 @@ define known_hosts::known_host (
   if $user == undef {
     $target = '/etc/ssh/ssh_known_hosts'
   } else {
+    if $home_root == undef {
     $target = "/home/${user}/.ssh/known_hosts"
+    } else {
+      $target = "${home_root}/${user}/.ssh/known_hosts"
+    }
   }
 
   if $revoked {
