@@ -19,6 +19,10 @@
 #   true and false.
 #   Default value: false
 #
+# [*home_root*]
+#   Optional root folder for user home, overrides default of /home.
+#   Default value: []
+#
 # [*host_aliases*]
 #   Additional aliases for the host that use the same key. Should be an array
 #   of strings.
