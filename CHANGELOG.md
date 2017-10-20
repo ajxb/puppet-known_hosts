@@ -4,6 +4,10 @@ This file keeps track of notable changes to the known_hosts puppet module.
 Like all [puppet modules](https://forge.puppetlabs.com) it adheres to
 [semantic versioning](http://semver.org).
 
+## [0.3.0] - 2015-07-31
+
+* Add configurable user_home folder for user and known_hosts classes
+
 ## [0.2.0] - 2015-07-31
 
 This release adds better documentation and testing.
