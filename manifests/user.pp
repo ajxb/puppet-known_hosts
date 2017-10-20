@@ -2,6 +2,12 @@
 #
 # This definition sets up the known_hosts file for a given user.
 #
+# === Parameters
+#
+# [*home_root*]
+#   Optional root folder for user home, overrides default of /home.
+#   Default value: []
+#
 # === Examples
 #
 #  known_hosts::user { 'username': }
