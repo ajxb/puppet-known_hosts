@@ -26,25 +26,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-define known_hosts::user {
-  file { "/home/${name}/.ssh":
+define known_hosts::user (
+  $home_root = undef
+) {
+
+  if $home_root == undef {
+    $user_root = "/home/${name}"
+  } else {
+    $user_root = "${home_root}/${name}"
+  }
+
+  file { "${user_root}/.ssh":
     ensure => 'directory',
     owner  => $name,
     group  => $name,
     mode   => '0700'
   }
 
-  concat { "/home/${name}/.ssh/known_hosts":
+  concat { "${user_root}/.ssh/known_hosts":
     ensure  => present,
     owner   => $name,
     group   => $name,
     mode    => '0644',
-    require => File["/home/${name}/.ssh"]
+    require => File["${user_root}/.ssh"]
   }
 
   concat::fragment { "${name}'s local known hosts header":
     order   => '01',
-    target  => "/home/${name}/.ssh/known_hosts",
+    target  => "${user_root}/.ssh/known_hosts",
     content => "# KNOWN_HOSTS managed by puppet. Do not edit directly.\n"
   }
 }
